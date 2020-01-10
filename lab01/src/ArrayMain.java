@@ -1,10 +1,8 @@
-package array;
-
 import array.implementation.Array;
 
 import java.util.Scanner;
 
-public class Main {
+public class ArrayMain {
     public static void main(String[] args) {
         Array array = new Array();
         System.out.println("Enter Size of Array");
@@ -18,8 +16,9 @@ public class Main {
         System.out.println("Enter value to be deleted");
         array.deleteValue(scan.nextInt());
         System.out.println("Enter value to be searched");
+        System.out.println("Array " + array.displayArray());
         System.out.println("Value is at index " + array.searchValue(scan.nextInt()));
         array.sortArray();
-        System.out.println("Sorted Array " + array);
+        System.out.println("Sorted Array " + array.displayArray());
     }
 }

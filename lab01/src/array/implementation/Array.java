@@ -7,13 +7,14 @@ import java.util.Scanner;
 
 public class Array implements ArrayInterface {
     int[] array;
+    int size;
 
     @Override
     public String displayArray() {
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append("|");
-        for (int i : array) {
-            stringBuffer.append(i);
+        for (int i = 0; i < this.size; i++) {
+            stringBuffer.append(array[i]);
             stringBuffer.append("|");
         }
         return stringBuffer.toString();
@@ -21,6 +22,7 @@ public class Array implements ArrayInterface {
 
     @Override
     public void insert(int size) {
+        this.size = size;
         Scanner scan = new Scanner(System.in);
         array = new int[10];
         for (int i = 0; i < size; i++) {
@@ -40,8 +42,8 @@ public class Array implements ArrayInterface {
     @Override
     public int sum() {
         int sumValue = 0;
-        for (int i : array) {
-            sumValue += i;
+        for (int i = 0; i < this.size; i++) {
+            sumValue += array[i];
         }
         return sumValue;
     }
@@ -49,10 +51,8 @@ public class Array implements ArrayInterface {
     @Override
     public float average() {
         float averageValue = 0.0f;
-        for (int i : array) {
-            averageValue += i;
-        }
-        return averageValue / array.length;
+        averageValue = (float) this.sum() / this.size;
+        return averageValue;
     }
 
     @Override
@@ -62,25 +62,27 @@ public class Array implements ArrayInterface {
             return;
         }
 
-        if (index >= array.length) {
+        if (index >= this.size) {
             System.out.println("Wrong index given.");
             return;
         }
 
-        for (int i = index; i < array.length - 1; i++) {
+        for (int i = index; i < this.size - 1; i++) {
             array[i] = array[i + 1];
         }
-        array[array.length] = -99999;
+        array[this.size - 1] = -99999;
+        this.size--;
     }
 
     @Override
     public void deleteValue(int value) {
-        for (int i = 0; i < array.length - 1; i++) {
+        for (int i = 0; i < this.size; i++) {
             if (array[i] == value) {
-                for (int j = i; i < array.length - 1; j++) {
+                for (int j = i; j < this.size - 1; j++) {
                     array[j] = array[j + 1];
                 }
-                array[array.length] = -99999;
+                array[array.length - 1] = -99999;
+                this.size--;
             }
         }
     }
@@ -88,7 +90,7 @@ public class Array implements ArrayInterface {
     @Override
     public int searchValue(int value) {
         int index = -1;
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < this.size; i++) {
             if (array[i] == value) {
                 index = i;
                 break;
@@ -99,8 +101,8 @@ public class Array implements ArrayInterface {
 
     @Override
     public void sortArray() {
-        for (int i = 0; i < array.length - 1; i++) {
-            for (int j = 0; j < array.length - 1 - i; j++) {
+        for (int i = 0; i < this.size - 1; i++) {
+            for (int j = 0; j < this.size - 1 - i; j++) {
                 if (array[j] > array[i]) {
                     int temp = array[j];
                     array[j] = array[i];

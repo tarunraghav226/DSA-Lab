@@ -3,7 +3,7 @@ package array.interfaces;
 public interface ArrayInterface {
     String displayArray();
 
-    int[] insert(int size);
+    void insert(int size);
 
     int sum();
 
@@ -13,7 +13,7 @@ public interface ArrayInterface {
 
     void deleteValue(int value);
 
-    int searcValue(int value);
+    int searchValue(int value);
 
     void sortArray();
 }

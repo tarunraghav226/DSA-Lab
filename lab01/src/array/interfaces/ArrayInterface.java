@@ -8,4 +8,12 @@ public interface ArrayInterface {
     int sum();
 
     float average();
+
+    void deleteValueOnIndex(int index);
+
+    void deleteValue(int value);
+
+    int searcValue(int value);
+
+    void sortArray();
 }

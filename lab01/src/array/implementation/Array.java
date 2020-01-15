@@ -103,11 +103,12 @@ public class Array implements ArrayInterface {
     public void sortArray() {
         boolean flag = false;
         for (int i = 0; i < this.size - 1; i++) {
+            flag = false;
             for (int j = 0; j < this.size - 1 - i; j++) {
-                if (array[j] > array[i]) {
+                if (array[j] > array[j + 1]) {
                     int temp = array[j];
-                    array[j] = array[i];
-                    array[i] = temp;
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
                     flag = true;
                 }
             }

@@ -1,13 +1,16 @@
 package towerOfHanoi;
 
 public class TowerOfHanoi {
-    public void towerOfHanoi(int n, String source, String temp, String destination) {
+    public int towerOfHanoi(int n, String source, String temp, String destination) {
+        int count = 1;
         if (n == 1) {
             System.out.println(source + " " + destination);
+            return 1;
         } else {
-            towerOfHanoi(n - 1, source, destination, temp);
+            count += towerOfHanoi(n - 1, source, destination, temp);
             System.out.println(source + " " + destination);
-            towerOfHanoi(n - 1, temp, source, destination);
+            count += towerOfHanoi(n - 1, temp, source, destination);
         }
+        return count;
     }
 }

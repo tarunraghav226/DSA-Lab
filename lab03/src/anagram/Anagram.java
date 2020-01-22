@@ -65,14 +65,12 @@ public class Anagram {
     }
 
     private int countDifferentChars(String string1, String string2) {
-        string1 = sortedString(string1);
-        string2 = sortedString(string2);
         int count = 0;
         for (int i = 0; i < string1.length(); i++)
             if (string1.charAt(i) != string2.charAt(i))
                 count++;
 
-        return count;
+        return count * 2 + Math.abs(string1.length() - string2.length());
     }
 
     public void checkStrings() {
@@ -87,18 +85,21 @@ public class Anagram {
         for (int i : array) {
             System.out.print(i + " ");
         }
+        System.out.println();
     }
 
     public void displayStringArray1() {
         for (String s : stringArray1) {
             System.out.print(s + " ");
         }
+        System.out.println();
     }
 
     public void displayStringArray2() {
         for (String s : stringArray2) {
             System.out.print(s + " ");
         }
+        System.out.println();
     }
 
 }

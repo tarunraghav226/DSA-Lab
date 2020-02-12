@@ -19,4 +19,9 @@ public class Student {
     public void setCpi(float cpi) {
         this.cpi = cpi;
     }
+
+    @Override
+    public String toString() {
+        return this.getName();
+    }
 }
